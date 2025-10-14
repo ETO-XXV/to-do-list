@@ -1,3 +1,12 @@
+class task {
+    constructor(name) {
+        this.name = name;
+        this.completed = false;
+        this.date = new Date();
+    }
+}
+
+
 const add_tasks = document.querySelector('.add_bar');
 const add = document.querySelector('.button_add');
 const list = document.querySelector('.tasks_list');
@@ -28,14 +37,33 @@ add.addEventListener('click', function() {
     task.textContent = add_tasks.value; // ✅ put the value inside the div
     task.id = "task_" + counter;
 
+    const check_box = document.createElement('input')
+    check_box.type = "checkbox";
+    check_box.className = "check_box";
+    check_box.id = "check_box_" + counter;
+
+    check_box.addEventListener('change', () => {
+        if (check_box.checked) {
+            task.style.textDecoration = "line-through";
+            task.style.color = "grey";
+        } else {
+            task.classList.remove('completed');
+            task.style.textDecoration = "none";
+            task.style.color = "white";
+        }
+    });
 
     task_container.appendChild(task);        // ✅ add it to the page
     task_container.appendChild(close_task);
+    task_container.appendChild(check_box);
 
-    close_task.addEventListener('click', () =>{
-        task_container.remove();
-    }
-    )
+    
+    close_task.addEventListener('click', () => {
+        task_container.classList.add('removing');
+        task_container.addEventListener('transitionend', () => {
+            task_container.remove();
+        }, { once: true });
+    });
 
     counter += 1;
 }
