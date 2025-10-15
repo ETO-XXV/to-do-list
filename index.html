@@ -8,11 +8,22 @@
     <script src="script.js" defer ></script>
 </head>
 <body>
-    <div class="container_add">
-    <input class="add_bar" type="text" placeholder="Enter a task">
+    <div class="container_control blur">
+    <input class="search_bar" type="text" placeholder="search">
     <button class="button_add">add</button>
     </div>
-    <div class="tasks_list"></div>
-    
+    <div class="tasks_list blur"></div>
+    <div class="pop_up">
+            <p class="title"> ADD A TASK</p>
+            <p class="above_input">task name</p>
+            <input type="text" class="task_name" placeholder="Enter a task">
+            <p class="above_input">dead line</p>
+            <input type="text" class="task_deadline" placeholder="dd/mm/yyyy">
+            <div class="buttons" >
+            <button class="cancel">CANCEL</button>
+            <button class="confirm">CONFIRM</button>
+            </div >
+    </div>
 </body>
+
 </html>

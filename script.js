@@ -1,15 +1,29 @@
-class task {
+class task_info {
     constructor(name) {
         this.name = name;
         this.completed = false;
-        this.date = new Date();
+        this.deadline = null;
+        this.id = null;
+
     }
 }
 
+const tasks = [];
 
-const add_tasks = document.querySelector('.add_bar');
+
+const container_control = document.querySelector('.container_control');
+const add_tasks = document.querySelector('.search_bar');
+
 const add = document.querySelector('.button_add');
+
 const list = document.querySelector('.tasks_list');
+const pop_up = document.querySelector('.pop_up');
+
+const task_input = document.querySelector('.task_name');
+const deadline_input = document.querySelector('.task_deadline');
+
+const submit = document.querySelector('.confirm');
+const cancel = document.querySelector('.cancel');
 
 let counter = 0 ;
 
@@ -19,6 +33,22 @@ add.addEventListener('click', function() {
 //    const close = document.createElement('img');
 //   close.src = "close.svg";
 //  close.className = "close";
+
+    list.style.filter = "blur(6px)";
+    container_control.style.filter = "blur(6px)";
+    pop_up.style.display = "flex";    
+
+}
+
+);
+
+cancel.addEventListener('click', function() {
+    list.style.filter = "none";
+    container_control.style.filter = "none";
+    pop_up.style.display = "none";
+});
+
+submit.addEventListener('click', function() {
 
     const task_container = document.createElement('div');
     task_container.className = "task_container";
@@ -34,7 +64,7 @@ add.addEventListener('click', function() {
 
     const task = document.createElement('div');
     task.className = "task_item";
-    task.textContent = add_tasks.value; // ✅ put the value inside the div
+    task.textContent = task_input.value; // ✅ put the value inside the div
     task.id = "task_" + counter;
 
     const check_box = document.createElement('input')
@@ -57,18 +87,28 @@ add.addEventListener('click', function() {
     task_container.appendChild(close_task);
     task_container.appendChild(check_box);
 
-    
-    close_task.addEventListener('click', () => {
+
+        close_task.addEventListener('click', () => {
         task_container.classList.add('removing');
         task_container.addEventListener('transitionend', () => {
             task_container.remove();
         }, { once: true });
     });
 
+    tasks.push(new task_info(task_input.value));
+    tasks[counter].deadline = deadline_input.value;
+    tasks[counter].id = counter;
+
     counter += 1;
+
+
+    list.style.filter = "none";
+    container_control.style.filter = "none";
+    pop_up.style.display = "none";
+
+    console.log(tasks);
 }
-)
 
-
+);
 
 
