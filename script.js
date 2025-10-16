@@ -4,17 +4,16 @@ class task_info {
         this.completed = false;
         this.deadline = null;
         this.id = null;
-
     }
 }
 
 const tasks = [];
 
-
 const container_control = document.querySelector('.container_control');
 const add_tasks = document.querySelector('.search_bar');
 
 const add = document.querySelector('.button_add');
+const search = document.querySelector('.search');
 
 const list = document.querySelector('.tasks_list');
 const pop_up = document.querySelector('.pop_up');
@@ -94,13 +93,12 @@ submit.addEventListener('click', function() {
             task_container.remove();
         }, { once: true });
     });
-
+    
     tasks.push(new task_info(task_input.value));
     tasks[counter].deadline = deadline_input.value;
     tasks[counter].id = counter;
 
     counter += 1;
-
 
     list.style.filter = "none";
     container_control.style.filter = "none";
@@ -110,5 +108,18 @@ submit.addEventListener('click', function() {
 }
 
 );
+
+search.addEventListener('click', function() {
+    search_query = add_tasks.value;
+    const array_search = tasks.filter(task => task.name !== search_query );
+    const array_search2 = tasks.filter(task => ( task.name === search_query  ||  search_query === "" ) );
+
+    for (let i = 0; i < array_search.length; i++) {
+        const task_element = document.getElementById("task_" + array_search[i].id);
+        const task_container_element = document.getElementById("task_container_" + array_search[i].id);
+        task_container_element.style.display = "none";
+    }
+
+});
 
 

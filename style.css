@@ -57,6 +57,23 @@ body {
 .button_add:hover {
     background-color: #1a622a;
 }
+
+.search{
+      padding: 13px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #67C090;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.search:hover {
+    background-color: #1a622a;
+}
+
 .tasks_list {
     width: 80%;
     height: 87vh;
@@ -162,6 +179,7 @@ body {
     height: 40%;      /* your fixed height */
     min-width:  100px;      /* your fixed width */
     min-height: 100px;     /* your fixed height */
+    max-width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
