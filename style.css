@@ -21,6 +21,7 @@ body {
     align-items: center;
     margin-bottom: 40px;
     background-color: #26667F;
+    
 }
 
 .search_bar:hover {
@@ -44,22 +45,8 @@ body {
 
 }
 
-.button_add {
+.btn {
     padding: 13px 20px;
-    border: none;
-    border-radius: 20px;
-    background-color: #67C090;
-    color: white;
-    font-size: 23px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.button_add:hover {
-    background-color: #1a622a;
-}
-
-.search{
-      padding: 13px 20px;
     border: none;
     border-radius: 20px;
     background-color: #67C090;
@@ -69,10 +56,11 @@ body {
     transition: 0.3s;
     margin-right: 10px;
 }
-
-.search:hover {
+.btn:hover {
     background-color: #1a622a;
 }
+
+
 
 .tasks_list {
     width: 80%;
@@ -93,11 +81,13 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 20px;
+    transition: opacity 280ms ease, transform 280ms ease;
+
 }
 
 .task_container.removing {
   opacity: 0;
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
 .task_item {
@@ -108,6 +98,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.task_item.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.6;
 }
 
 
@@ -154,8 +149,6 @@ body {
   cursor: pointer;
   position: relative;           /* for ::after */
 }
-
-
 
 /* focus ring */
 
@@ -249,5 +242,7 @@ body {
     font-size: 18px;
     font-weight: bold;
 }
+
+
 
 
